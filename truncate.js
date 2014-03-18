@@ -213,6 +213,12 @@
     };
 
     this.options = $.extend({}, this._defaults, options);
+
+    // Grab the line height if it's not provided
+    if (!this.options.lineHeight) {
+        this.options.lineHeight = window.getComputedStyle(element).lineHeight;
+    }
+
     this.options.maxHeight = parseInt(this.options.lines, 10) * parseInt(this.options.lineHeight, 10);
 
     this.$clipNode = $($.parseHTML(this.options.showMore), this.$element);
